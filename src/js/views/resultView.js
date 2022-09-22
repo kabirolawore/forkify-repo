@@ -9,14 +9,16 @@ class ResultsView extends View {
   _successMessage = ``;
 
   _generateMarkup() {
-    console.log(this._data);
-    return this._data.map(this._generateMarkupPreview).join();
+    // console.log(this._data);
+    return this._data.map(this._generateMarkupPreview).join('');
   }
 
   _generateMarkupPreview(result) {
     return `
     <li class="preview">
-      <a class="preview__link" href="#${result.id}">
+      <a class="preview__link ${
+        result.id === id ? 'preview__link--active' : ''
+      }" href="#${result.id}">
         <figure class="preview__fig">
           <img src="${result.image}" alt="${result.title}" />
         </figure>
@@ -30,9 +32,3 @@ class ResultsView extends View {
 }
 
 export default new ResultsView();
-
-// <div class="preview__user-generated">
-//   <svg>
-//     <use href="${icons}#icon-user"></use>
-//   </svg>
-// </div>
